@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>Car-Rental</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Car-Rental</name>
+	<username>Car-Rental</username>
 	<description>This is Car Rental API</description>
 	<url/>
 	<licenses>

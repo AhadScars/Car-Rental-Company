@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/car")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -19,7 +19,7 @@ public class UserController {
         return service.getAll();
     }
     @PostMapping("/add")
-    public UserEntity saveUser(UserEntity user){
+    public UserEntity saveUser(@RequestBody UserEntity user){
         return service.saveUser(user);
     }
     @DeleteMapping("delete")
