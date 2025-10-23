@@ -1,4 +1,4 @@
-package com.example.Car.Rental.user;
+package com.example.Car.Rental.controller;
 
 import com.example.Car.Rental.entity.vehicle_Entity;
 import com.example.Car.Rental.service.Vehicle_Service;
