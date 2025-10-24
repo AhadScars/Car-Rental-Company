@@ -1,10 +1,9 @@
 package com.example.Car.Rental.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 public class Booking_Entity {
@@ -13,9 +12,11 @@ public class Booking_Entity {
     private Integer id;
 
     @ManyToOne
+    @JoinColumn(name = "vehicle_id")
     private vehicle_Entity vehicle;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private UserEntity user;
 
     private LocalDate startDate;
@@ -80,5 +81,12 @@ public class Booking_Entity {
     }
 
     public Booking_Entity() {
+    }
+    @PrePersist
+    @PreUpdate
+    private void calculateAmount() {
+        long days = ChronoUnit.DAYS.between(startDate, endDate);
+        Double pricePerDay = vehicle.getPricePerDay();
+        this.amount = days * pricePerDay;
     }
 }
