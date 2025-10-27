@@ -22,5 +22,24 @@ public class Vehicle_Service {
     public void deleteAll(){
         repo.deleteAll();
     }
+    public vehicle_Entity findBYid(Integer id){
+        return repo.findByid(id);
+    }
+    public void deleteByid(Integer id){
+        repo.deleteById(id);
+    }
+    public vehicle_Entity editvehicle(Integer id , vehicle_Entity entity){
+        vehicle_Entity edit = repo.findByid(id);
 
+        edit.setBrand(entity.getBrand());
+        edit.setAvailable(entity.getAvailable());
+        edit.setName(entity.getName());
+        edit.setVehicleType(entity.getVehicleType());
+        edit.setPricePerDay(entity.getPricePerDay());
+
+        return repo.save(edit);
+    }
+    public List<vehicle_Entity> findByname(String name){
+        return repo.findByNameContainingIgnoreCase(name);
+    }
 }

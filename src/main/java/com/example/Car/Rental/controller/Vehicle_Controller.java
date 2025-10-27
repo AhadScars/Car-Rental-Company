@@ -28,4 +28,23 @@ public class Vehicle_Controller {
         service.deleteAll();
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void deletebyid(@PathVariable Integer id){
+        service.deleteByid(id);
+    }
+
+    @GetMapping("/show/{id}")
+    public vehicle_Entity findById(@PathVariable Integer id){
+        return service.findBYid(id);
+    }
+
+    @PutMapping("/edit/{id}")
+    public vehicle_Entity editVehicle(@PathVariable Integer id, @RequestBody vehicle_Entity entity){
+        return service.editvehicle(id,entity);
+    }
+
+    @GetMapping("/find/{name}")
+    public List<vehicle_Entity> findByName(@PathVariable String name){
+        return service.findByname(name);
+    }
 }

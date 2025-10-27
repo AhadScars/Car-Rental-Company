@@ -1,6 +1,4 @@
 package com.example.Car.Rental.service;
-
-
 import com.example.Car.Rental.entity.Booking_Entity;
 import com.example.Car.Rental.repository.Booking_repo;
 import org.springframework.beans.factory.annotation.Autowired;
