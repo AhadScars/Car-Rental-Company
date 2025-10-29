@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class Booking_Service {
@@ -24,4 +25,11 @@ public class Booking_Service {
         repo.deleteAll();
     }
 
+    public Optional<Booking_Entity> findById(Integer id) {
+        return repo.findById(id);
+    }
+
+    public List<Booking_Entity> findByUserId(Integer id){
+        return repo.findByUserId(id);
+    }
 }

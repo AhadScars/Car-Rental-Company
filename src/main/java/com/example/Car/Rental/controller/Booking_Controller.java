@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("/booking")
 @RestController
@@ -27,6 +28,16 @@ public class Booking_Controller {
     @DeleteMapping("/all")
     public void deleteAll (){
         service.deleteAll();
+    }
+
+    @GetMapping("/show/{id}")
+    public Optional<Booking_Entity> findById(@PathVariable Integer id){
+        return service.findById(id);
+    }
+
+    @GetMapping("/{id}")
+    public List<Booking_Entity> findByUserId (@PathVariable Integer id){
+        return service.findByUserId(id);
     }
 
 

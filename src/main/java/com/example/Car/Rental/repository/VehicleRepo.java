@@ -7,6 +7,8 @@ import java.security.PublicKey;
 import java.util.List;
 
 public interface VehicleRepo extends JpaRepository<vehicle_Entity , Integer> {
-    public vehicle_Entity findByid (Integer id);
-    public List<vehicle_Entity> findByNameContainingIgnoreCase (String name);
+    vehicle_Entity findByid (Integer id);
+    List<vehicle_Entity> findByNameContainingIgnoreCase (String name);
+    List<vehicle_Entity> findByAvailable(Boolean available);
+    List<vehicle_Entity> findByPricePerDayLessThan(Double price);
 }

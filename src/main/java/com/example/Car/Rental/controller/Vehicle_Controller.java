@@ -47,4 +47,14 @@ public class Vehicle_Controller {
     public List<vehicle_Entity> findByName(@PathVariable String name){
         return service.findByname(name);
     }
+
+    @GetMapping("/available")
+    public List<vehicle_Entity> findByAvailable(@RequestParam Boolean available){
+        return service.findByAvailable(available);
+    }
+
+    @GetMapping("/price")
+    public List<vehicle_Entity> findbypricelessthan(@RequestParam Double price){
+        return service.findByPriceLessthan(price);
+    }
 }

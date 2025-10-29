@@ -42,4 +42,12 @@ public class Vehicle_Service {
     public List<vehicle_Entity> findByname(String name){
         return repo.findByNameContainingIgnoreCase(name);
     }
+
+    public List<vehicle_Entity> findByAvailable(Boolean available){
+        return repo.findByAvailable(available);
+    }
+
+    public List<vehicle_Entity> findByPriceLessthan(Double price){
+        return repo.findByPricePerDayLessThan(price);
+    }
 }
