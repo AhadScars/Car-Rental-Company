@@ -29,8 +29,8 @@ public class Config {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
 
-                        .requestMatchers("/vehicle/show","/register/add").permitAll()
-                        .requestMatchers("/vehicle/add","/vehicle/delete").hasRole("ADMIN")
+                        .requestMatchers("/vehicle/show","/register/add","/vehicle/**").permitAll()
+                        .requestMatchers("/vehicle/add","/vehicle/delete","register/**").hasRole("ADMIN")
                         .requestMatchers("/booking/add").hasRole("USER")
                         .anyRequest().authenticated()
 

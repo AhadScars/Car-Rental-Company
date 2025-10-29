@@ -25,8 +25,9 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return repository.save(user);
     }
-    public void deleteAll(){
+    public boolean deleteAll(){
         repository.deleteAll();
+        return false;
     }
 
 

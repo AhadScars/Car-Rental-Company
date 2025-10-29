@@ -4,8 +4,12 @@ package com.example.Car.Rental.controller;
 import com.example.Car.Rental.entity.Booking_Entity;
 import com.example.Car.Rental.service.Booking_Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Book;
+import java.security.PublicKey;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,12 +21,19 @@ public class Booking_Controller {
     Booking_Service service;
 
     @GetMapping("/show")
-    public List<Booking_Entity> getAll(){
-        return service.getAll();
+    public ResponseEntity<?> showAll(){
+        List<Booking_Entity> showAll = service.getAll();
+        if (showAll.isEmpty()){
+            new ResponseEntity<>("No Booking", HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(showAll,HttpStatus.OK);
     }
+
+
     @PostMapping("/add")
-    public Booking_Entity addBooking(@RequestBody Booking_Entity entity){
-        return service.addBooking(entity);
+   public ResponseEntity<String> addBooking(@RequestBody Booking_Entity entity){
+        Booking_Entity booking = service.addBooking(entity);
+        return new ResponseEntity<>("Booking Added ", HttpStatus.OK);
     }
 
     @DeleteMapping("/all")
