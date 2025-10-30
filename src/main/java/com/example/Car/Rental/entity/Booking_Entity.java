@@ -21,7 +21,7 @@ public class Booking_Entity {
 
     @ManyToOne
     @JoinColumn(name = "vehicle_id")
-    private vehicle_Entity vehicle;
+    private VehicleEntity vehicle;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

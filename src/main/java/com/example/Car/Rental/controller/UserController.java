@@ -43,4 +43,14 @@ public class UserController {
         }
     }
 
+    @GetMapping("/find/{username}")
+    public UserEntity findBYUsername(@PathVariable String username){
+        return service.findByUserName(username);
+    }
+
+    @PostMapping("/verify")
+    public String verify(@RequestBody UserEntity entity){
+        return service.verifyUser(entity);
+    }
+
 }

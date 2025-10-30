@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class vehicle_Entity {
+public class VehicleEntity {
 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id

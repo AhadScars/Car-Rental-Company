@@ -21,7 +21,7 @@ public class CostumerDetailsService implements UserDetailsService  {
         UserEntity user = repository.findByUsername(username);
 
         if (user == null)   {
-            throw new UsernameNotFoundException("username Not Found");
+            throw new UsernameNotFoundException("username Not Found in my database");
         }
         return new userPrinciple(user);
     }

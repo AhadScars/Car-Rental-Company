@@ -1,6 +1,6 @@
 package com.example.Car.Rental.controller;
 
-import com.example.Car.Rental.entity.vehicle_Entity;
+import com.example.Car.Rental.entity.VehicleEntity;
 import com.example.Car.Rental.service.Vehicle_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ public class Vehicle_Controller {
 
     @GetMapping("/show")
        public ResponseEntity<?> showAll(){
-        List<vehicle_Entity> showAll = service.getAll();
+        List<VehicleEntity> showAll = service.getAll();
         if (showAll.isEmpty()){
             new ResponseEntity<>("Vehicle IS Empty", HttpStatus.NO_CONTENT);
 
@@ -28,8 +28,8 @@ public class Vehicle_Controller {
 
 
     @PostMapping("/add")
-    public ResponseEntity<String> AddVehicle(@RequestBody vehicle_Entity vehicleEntity){
-        vehicle_Entity Vehicle = service.addVehicle(vehicleEntity);
+    public ResponseEntity<String> AddVehicle(@RequestBody VehicleEntity vehicleEntity){
+        VehicleEntity Vehicle = service.addVehicle(vehicleEntity);
         return new ResponseEntity<>("Vehicle Added Succesfull", HttpStatus.OK);
     }
 
@@ -45,27 +45,27 @@ public class Vehicle_Controller {
     }
 
     @GetMapping("/show/{id}")
-    public vehicle_Entity findById(@PathVariable Integer id){
+    public VehicleEntity findById(@PathVariable Integer id){
         return service.findBYid(id);
     }
 
     @PutMapping("/edit/{id}")
-    public vehicle_Entity editVehicle(@PathVariable Integer id, @RequestBody vehicle_Entity entity){
+    public VehicleEntity editVehicle(@PathVariable Integer id, @RequestBody VehicleEntity entity){
         return service.editvehicle(id,entity);
     }
 
     @GetMapping("/find/{name}")
-    public List<vehicle_Entity> findByName(@PathVariable String name){
+    public List<VehicleEntity> findByName(@PathVariable String name){
         return service.findByname(name);
     }
 
     @GetMapping("/available")
-    public List<vehicle_Entity> findByAvailable(@RequestParam Boolean available){
+    public List<VehicleEntity> findByAvailable(@RequestParam Boolean available){
         return service.findByAvailable(available);
     }
 
     @GetMapping("/")
-    public List<vehicle_Entity> findbypricelessthan(@RequestParam Double price){
+    public List<VehicleEntity> findbypricelessthan(@RequestParam Double price){
         return service.findByPriceLessthan(price);
     }
 }

@@ -1,6 +1,6 @@
 package com.example.Car.Rental.service;
 
-import com.example.Car.Rental.entity.vehicle_Entity;
+import com.example.Car.Rental.entity.VehicleEntity;
 import com.example.Car.Rental.repository.VehicleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,23 +13,23 @@ public class Vehicle_Service {
     @Autowired
     VehicleRepo repo;
 
-    public List<vehicle_Entity> getAll(){
+    public List<VehicleEntity> getAll(){
         return repo.findAll();
     }
-    public vehicle_Entity addVehicle(vehicle_Entity vehicleEntity){
+    public VehicleEntity addVehicle(VehicleEntity vehicleEntity){
         return repo.save(vehicleEntity);
     }
     public void deleteAll(){
         repo.deleteAll();
     }
-    public vehicle_Entity findBYid(Integer id){
+    public VehicleEntity findBYid(Integer id){
         return repo.findByid(id);
     }
     public void deleteByid(Integer id){
         repo.deleteById(id);
     }
-    public vehicle_Entity editvehicle(Integer id , vehicle_Entity entity){
-        vehicle_Entity edit = repo.findByid(id);
+    public VehicleEntity editvehicle(Integer id , VehicleEntity entity){
+        VehicleEntity edit = repo.findByid(id);
 
         edit.setBrand(entity.getBrand());
         edit.setAvailable(entity.getAvailable());
@@ -39,15 +39,15 @@ public class Vehicle_Service {
 
         return repo.save(edit);
     }
-    public List<vehicle_Entity> findByname(String name){
+    public List<VehicleEntity> findByname(String name){
         return repo.findByNameContainingIgnoreCase(name);
     }
 
-    public List<vehicle_Entity> findByAvailable(Boolean available){
+    public List<VehicleEntity> findByAvailable(Boolean available){
         return repo.findByAvailable(available);
     }
 
-    public List<vehicle_Entity> findByPriceLessthan(Double price){
+    public List<VehicleEntity> findByPriceLessthan(Double price){
         return repo.findByPricePerDayLessThan(price);
     }
 }
