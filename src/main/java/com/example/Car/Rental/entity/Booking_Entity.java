@@ -1,7 +1,9 @@
 package com.example.Car.Rental.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -10,7 +12,8 @@ import java.time.temporal.ChronoUnit;
 @Entity
 @Getter
 @Setter
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class Booking_Entity {
 
     @Id
@@ -27,19 +30,6 @@ public class Booking_Entity {
     private LocalDate startDate;
     private LocalDate endDate;
     private double amount;
-
-    public Booking_Entity(Integer id, vehicle_Entity vehicle, UserEntity user, LocalDate startDate, LocalDate endDate, double amount) {
-        this.id = id;
-        this.vehicle = vehicle;
-        this.user = user;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.amount = amount;
-    }
-
-    public Booking_Entity() {
-    }
-
 
     @PrePersist
     @PreUpdate
