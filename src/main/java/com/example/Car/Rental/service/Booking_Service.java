@@ -1,5 +1,5 @@
 package com.example.Car.Rental.service;
-import com.example.Car.Rental.entity.Booking_Entity;
+import com.example.Car.Rental.entity.BookingEntity;
 import com.example.Car.Rental.repository.Booking_repo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +13,11 @@ public class Booking_Service {
     @Autowired
     Booking_repo repo;
 
-    public List<Booking_Entity> getAll(){
+    public List<BookingEntity> getAll(){
         return repo.findAll();
     }
 
-    public Booking_Entity addBooking(Booking_Entity entity){
+    public BookingEntity addBooking(BookingEntity entity){
         return repo.save(entity);
     }
 
@@ -25,11 +25,11 @@ public class Booking_Service {
         repo.deleteAll();
     }
 
-    public Optional<Booking_Entity> findById(Integer id) {
+    public Optional<BookingEntity> findById(Integer id) {
         return repo.findById(id);
     }
 
-    public List<Booking_Entity> findByUserId(Integer id){
+    public List<BookingEntity> findByUserId(Integer id){
         return repo.findByUserId(id);
     }
 }

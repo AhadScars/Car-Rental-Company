@@ -1,6 +1,6 @@
 package com.example.Car.Rental.security;
 
-import com.example.Car.Rental.service.CostumerDetailsService;
+import com.example.Car.Rental.service.CustomerDetailsService;
 import com.example.Car.Rental.service.JWTservice;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -31,13 +31,13 @@ public class JWTFilter extends OncePerRequestFilter {
         String token = null;
         String username = null;
 
-        if (authheader != null && authheader.startsWith("Bearer ")){
+        if (authheader != null && authheader.startsWith("Bearer ")) {
             token = authheader.substring(7);
             username = jwTservice.extractUserName(token);
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = context.getBean(CostumerDetailsService.class).loadUserByUsername(username);
+            UserDetails userDetails = context.getBean(CustomerDetailsService.class).loadUserByUsername(username);
             if (jwTservice.validateToken(token, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
@@ -45,7 +45,7 @@ public class JWTFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }
-        filterChain.doFilter(request,response);
+        filterChain.doFilter(request, response);
     }
-    }
+}
 

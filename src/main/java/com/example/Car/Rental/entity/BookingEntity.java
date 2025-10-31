@@ -14,7 +14,7 @@ import java.time.temporal.ChronoUnit;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Booking_Entity {
+public class BookingEntity {
 
     @Id
     private Integer id;

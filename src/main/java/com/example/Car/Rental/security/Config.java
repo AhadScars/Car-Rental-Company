@@ -1,6 +1,6 @@
 package com.example.Car.Rental.security;
 
-import com.example.Car.Rental.service.CostumerDetailsService;
+import com.example.Car.Rental.service.CustomerDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +23,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class Config {
 
     @Autowired
-    CostumerDetailsService detailsService;
+    CustomerDetailsService detailsService;
 
     @Autowired
     JWTFilter jwtFilter;

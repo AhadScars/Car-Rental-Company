@@ -7,10 +7,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import com.example.Car.Rental.entity.userPrinciple;
+import com.example.Car.Rental.entity.UserPrincipal;
 
 @Service
-public class CostumerDetailsService implements UserDetailsService  {
+public class CustomerDetailsService implements UserDetailsService  {
 
     @Autowired
     UserRepository repository;
@@ -23,6 +23,6 @@ public class CostumerDetailsService implements UserDetailsService  {
         if (user == null)   {
             throw new UsernameNotFoundException("username Not Found in my database");
         }
-        return new userPrinciple(user);
+        return new UserPrincipal(user);
     }
 }

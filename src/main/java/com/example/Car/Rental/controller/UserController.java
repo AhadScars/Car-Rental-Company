@@ -52,5 +52,4 @@ public class UserController {
     public String verify(@RequestBody UserEntity entity){
         return service.verifyUser(entity);
     }
-
 }

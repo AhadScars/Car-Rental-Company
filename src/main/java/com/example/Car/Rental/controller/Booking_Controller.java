@@ -1,7 +1,7 @@
 package com.example.Car.Rental.controller;
 
 
-import com.example.Car.Rental.entity.Booking_Entity;
+import com.example.Car.Rental.entity.BookingEntity;
 import com.example.Car.Rental.service.Booking_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,17 +19,17 @@ public class Booking_Controller {
 
     @GetMapping("/show")
     public ResponseEntity<?> showAll(){
-        List<Booking_Entity> showAll = service.getAll();
+        List<BookingEntity> showAll = service.getAll();
         if (showAll.isEmpty()){
-            new ResponseEntity<>("No Booking", HttpStatus.NO_CONTENT);
+           return new ResponseEntity<>("No Booking", HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(showAll,HttpStatus.OK);
     }
 
 
     @PostMapping("/add")
-   public ResponseEntity<String> addBooking(@RequestBody Booking_Entity entity){
-        Booking_Entity booking = service.addBooking(entity);
+   public ResponseEntity<String> addBooking(@RequestBody BookingEntity entity){
+        BookingEntity booking = service.addBooking(entity);
         return new ResponseEntity<>("Booking Added ", HttpStatus.OK);
     }
 
@@ -39,12 +39,12 @@ public class Booking_Controller {
     }
 
     @GetMapping("/show/{id}")
-    public Optional<Booking_Entity> findById(@PathVariable Integer id){
+    public Optional<BookingEntity> findById(@PathVariable Integer id){
         return service.findById(id);
     }
 
     @GetMapping("/{id}")
-    public List<Booking_Entity> findByUserId (@PathVariable Integer id){
+    public List<BookingEntity> findByUserId (@PathVariable Integer id){
         return service.findByUserId(id);
     }
 

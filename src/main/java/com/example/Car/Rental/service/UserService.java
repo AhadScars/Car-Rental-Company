@@ -36,7 +36,7 @@ public class UserService {
     }
     public boolean deleteAll(){
         repository.deleteAll();
-        return false;
+        return true;
     }
 
     public UserEntity findByUserName(String username){
