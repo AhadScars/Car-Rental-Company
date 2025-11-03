@@ -3,8 +3,10 @@ package com.example.Car.Rental.service;
 import com.example.Car.Rental.entity.VehicleEntity;
 import com.example.Car.Rental.repository.VehicleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 @Service
@@ -13,9 +15,13 @@ public class Vehicle_Service {
     @Autowired
     VehicleRepo repo;
 
-    public List<VehicleEntity> getAll(){
-        return repo.findAll();
+    public Page<VehicleEntity> getAll(int page, int size) {
+        Pageable pageable = (Pageable) PageRequest.of(page, size);
+        return repo.findAll(pageable);
     }
+
+
+
     public VehicleEntity addVehicle(VehicleEntity vehicleEntity){
         return repo.save(vehicleEntity);
     }

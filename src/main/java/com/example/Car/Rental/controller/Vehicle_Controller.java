@@ -3,6 +3,7 @@ package com.example.Car.Rental.controller;
 import com.example.Car.Rental.entity.VehicleEntity;
 import com.example.Car.Rental.service.Vehicle_Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +18,12 @@ public class Vehicle_Controller {
     Vehicle_Service service;
 
     @GetMapping("/show")
-       public ResponseEntity<?> showAll(){
-        List<VehicleEntity> showAll = service.getAll();
+       public ResponseEntity<?> showAll(
+               @RequestParam (defaultValue = "0") int page,
+               @RequestParam (defaultValue = "5") int size
+
+    ){
+        Page<VehicleEntity> showAll = service.getAll(page,size);
         if (showAll.isEmpty()){
             new ResponseEntity<>("Vehicle IS Empty", HttpStatus.NO_CONTENT);
 
