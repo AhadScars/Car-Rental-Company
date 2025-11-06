@@ -20,10 +20,11 @@ public class Vehicle_Controller {
     @GetMapping("/show")
        public ResponseEntity<?> showAll(
                @RequestParam (defaultValue = "0") int page,
-               @RequestParam (defaultValue = "5") int size
-
-    ){
-        Page<VehicleEntity> showAll = service.getAll(page,size);
+               @RequestParam (defaultValue = "5") int size,
+               @RequestParam(defaultValue = "id") String sortBy,
+               @RequestParam(defaultValue = "asc") String sortDir)
+            {
+        Page<VehicleEntity> showAll = service.getAll(page,size,sortBy,sortDir);
         if (showAll.isEmpty()){
             new ResponseEntity<>("Vehicle IS Empty", HttpStatus.NO_CONTENT);
 

@@ -35,7 +35,8 @@ public class Config {
                 .authorizeHttpRequests(auth -> auth
 
                         .requestMatchers("/vehicle/show","/register/add","/vehicle/**").permitAll()
-                        .requestMatchers("/vehicle/add","/vehicle/delete","register/**").hasRole("ADMIN")
+                        .requestMatchers("/vehicle/add","/vehicle/delete","/register/**").hasRole("ADMIN")
+                        .requestMatchers("/dashboard/**").hasRole("ADMIN")
                         .requestMatchers("/booking/add").hasRole("USER")
                         .anyRequest().authenticated()
 
